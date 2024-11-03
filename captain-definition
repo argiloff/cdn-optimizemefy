@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 2,
+  "dockerfileLines": [
+    "FROM nginx:latest",
+    "COPY . /usr/share/nginx/html"
+  ],
+  "initialBuildCommand": "npm install",
+  "appRoutes": [
+    {
+      "hostname": "cdn.optimizemefy.eu",
+      "path": "/",
+      "containerPath": "/usr/share/nginx/html",
+      "https": true
+    }
+  ],
+  "containerHttpPort": 80
+}
