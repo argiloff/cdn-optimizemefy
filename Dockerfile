@@ -14,7 +14,7 @@ RUN chmod -R 755 /var/www/static
 
 # Gesundheitscheck mit angemessener Wartezeit und mehr Versuchen
 HEALTHCHECK --interval=10s --timeout=5s --start-period=15s --retries=5 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
+  CMD wget --no-verbose --tries=1 --spider http://localhost:80/ || exit 1
 
 # Port freigeben
 EXPOSE 3000
