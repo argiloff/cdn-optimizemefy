@@ -1,16 +1,13 @@
 FROM nginx:alpine
 
 # Erstelle das Verzeichnis für statische Dateien
-RUN mkdir -p /var/www/static
+RUN mkdir -p /usr/share/nginx/html
 
 # Kopiere die statischen Dateien
-COPY ./public/ /var/www/static/
-
-# Kopiere die Nginx-Konfiguration
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY ./public/ /usr/share/nginx/html/
 
 # Setze die korrekten Berechtigungen
-RUN chmod -R 755 /var/www/static
+RUN chmod -R 755 /usr/share/nginx/html
 
 # Gesundheitscheck mit angemessener Wartezeit und mehr Versuchen
 HEALTHCHECK --interval=10s --timeout=5s --start-period=15s --retries=5 \
