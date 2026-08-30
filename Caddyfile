@@ -1,0 +1,6 @@
+{$DOMAIN} {
+	root * /srv
+	header Access-Control-Allow-Origin *
+	encode zstd gzip
+	file_server
+}
