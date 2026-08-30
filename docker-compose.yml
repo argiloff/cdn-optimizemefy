@@ -1,19 +1,16 @@
 services:
   cdn:
-    image: caddy:2-alpine
+    image: caddy:2.10.2-alpine
     container_name: cdn-optimizemefy-caddy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    environment:
-      DOMAIN: ${DOMAIN:-localhost}
+    restart: always
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./public:/srv:ro
-      - caddy_data:/data
-      - caddy_config:/config
+    networks:
+      ghost_network:
+        aliases:
+          - cdn
 
-volumes:
-  caddy_data:
-  caddy_config:
+networks:
+  ghost_network:
+    external: true

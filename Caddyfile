@@ -1,4 +1,4 @@
-{$DOMAIN} {
+:80 {
 	root * /srv
 	header Access-Control-Allow-Origin *
 	encode zstd gzip
